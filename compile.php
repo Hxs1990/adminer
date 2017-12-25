@@ -80,6 +80,7 @@ function lang(\$translation, \$number = null) {
 }
 
 function lzw_compress($string) {
+	return $string;
 	// compression
 	$dictionary = array_flip(range("\0", "\xFF"));
 	$word = "";
@@ -405,7 +406,7 @@ $file = preg_replace('~\\.\\./adminer/static/(default\\.css|functions\\.js|favic
 $file = preg_replace('~\\.\\./adminer/static/([^\'"]*)~', '" . ' . $replace, $file);
 $file = preg_replace('~\\.\\./externals/jush/modules/(jush\\.js)~', '<?php echo ' . $replace . '"; ?>', $file);
 $file = preg_replace("~<\\?php\\s*\\?>\n?|\\?>\n?<\\?php~", '', $file);
-$file = php_shrink($file);
+//$file = php_shrink($file);
 
 $filename = $project . (preg_match('~-dev$~', $VERSION) ? "" : "-$VERSION") . ($driver ? "-$driver" : "") . ($_SESSION["lang"] ? "-$_SESSION[lang]" : "") . ".php";
 file_put_contents($filename, $file);
